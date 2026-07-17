@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ActiveSectionProvider } from "@/context/ActiveSectionContext";
 
 export const metadata: Metadata = {
   title: "Umer Majeed",
@@ -9,16 +8,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <html lang="en">
-      <body>
-        <ActiveSectionProvider>
-          {children}
-        </ActiveSectionProvider>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
