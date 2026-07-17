@@ -4,15 +4,8 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ButtonTheme from "../ui/Button"
+import { navItems } from "@/data/navigation";
 
-const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Projects", href: "#projects" },
-  { name: "Skills", href: "#skills" },
-  { name: "Journey", href: "#experience" },
-  { name: "Contact", href: "#contact" },
-];
 
 export default function Navbar() {
   const [mobileMenu, setMobileMenu] = useState(false);
