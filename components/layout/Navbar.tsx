@@ -1,45 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-
 import ButtonTheme from "../ui/Button";
 import Logo from "./Logo";
 import NavLinks from "./NavLinks";
+import MobileMenu from "./MobileMenu";
+import MobileMenuButton from "./MobileMenuButton";
+
 import { navItems } from "@/data/navigation";
+import useNavbar from "@/hooks/useNavbar";
 
 export default function Navbar() {
-  const [mobileMenu, setMobileMenu] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [active, setActive] = useState("home");
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
-
-      const sections = navItems.map((item) =>
-        document.querySelector(item.href)
-      );
-
-      sections.forEach((section) => {
-        if (!section) return;
-
-        const top = (section as HTMLElement).offsetTop - 120;
-        const height = (section as HTMLElement).offsetHeight;
-
-        if (window.scrollY >= top && window.scrollY < top + height) {
-          setActive(section.id);
-        }
-      });
-    };
-
-    handleScroll();
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const {
+    mobileMenu,
+    setMobileMenu,
+    scrolled,
+    active,
+  } = useNavbar();
 
   return (
     <>
@@ -66,43 +42,20 @@ export default function Navbar() {
           </ButtonTheme>
 
           {/* Mobile Menu Button */}
-          <button
+          <MobileMenuButton
+            open={mobileMenu}
             onClick={() => setMobileMenu(!mobileMenu)}
-            className="lg:hidden"
-          >
-            {mobileMenu ? <X size={30} /> : <Menu size={30} />}
-          </button>
+          />
         </div>
       </header>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {mobileMenu && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed left-4 right-4 top-20 z-40 rounded-3xl border border-cyan-400/20 bg-[#07111d]/95 backdrop-blur-2xl lg:hidden"
-          >
-            <div className="flex flex-col p-6">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => setMobileMenu(false)}
-                  className={`rounded-xl px-4 py-4 transition ${
-                    active === item.href.replace("#", "")
-                      ? "bg-cyan-400 text-black"
-                      : "text-gray-300 hover:bg-white/5"
-                  }`}
-                >
-                  {item.name}
-                </a>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <MobileMenu
+        open={mobileMenu}
+        items={navItems}
+        active={active}
+        onClose={() => setMobileMenu(false)}
+      />
     </>
   );
 }
