@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import type { NavItem } from "@/data/navigation";
+import NavLinkItem from "./NavLinkItem";
 
 type MobileMenuProps = {
   open: boolean;
@@ -27,18 +28,13 @@ export default function MobileMenu({
         >
           <div className="flex flex-col p-6">
             {items.map((item) => (
-              <a
+              <NavLinkItem
                 key={item.name}
-                href={item.href}
+                item={item}
+                active={active}
+                mobile
                 onClick={onClose}
-                className={`rounded-xl px-4 py-4 transition ${
-                  active === item.href.replace("#", "")
-                    ? "bg-cyan-400 text-black"
-                    : "text-gray-300 hover:bg-white/5"
-                }`}
-              >
-                {item.name}
-              </a>
+              />
             ))}
           </div>
         </motion.div>
