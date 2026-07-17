@@ -19,14 +19,27 @@ export default function Navbar() {
 
   return (
     <>
-      <header
-        className={`fixed left-0 top-0 z-50 w-full transition-all duration-500 ${
-          scrolled
-            ? "border-b border-cyan-400/20 bg-black/55 backdrop-blur-2xl shadow-[0_0_40px_rgba(0,245,255,.08)]"
-            : "bg-transparent"
-        }`}
-      >
-        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
+      <header className="fixed inset-x-0 top-5 z-50 px-4">
+        <div
+          className={`
+            mx-auto
+            flex
+            h-20
+            max-w-7xl
+            items-center
+            justify-between
+            rounded-full
+            border
+            px-8
+            transition-all
+            duration-500
+            ${
+              scrolled
+                ? "border-cyan-400/20 bg-black/60 backdrop-blur-2xl shadow-[0_15px_50px_rgba(0,245,255,.12)]"
+                : "border-white/10 bg-white/5 backdrop-blur-xl"
+            }
+          `}
+        >
           {/* Logo */}
           <Logo />
 
@@ -38,14 +51,12 @@ export default function Navbar() {
 
           {/* Right Side */}
           <div className="flex items-center gap-4">
-            {/* Desktop Resume Button */}
             <div className="hidden lg:block">
               <ButtonTheme href="/resume.pdf">
                 Resume
               </ButtonTheme>
             </div>
 
-            {/* Mobile Menu Button */}
             <MobileMenuButton
               open={mobileMenu}
               onClick={() => setMobileMenu(!mobileMenu)}
@@ -54,7 +65,6 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Mobile Menu */}
       <MobileMenu
         open={mobileMenu}
         items={navItems}
