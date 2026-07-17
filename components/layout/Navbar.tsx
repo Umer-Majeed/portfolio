@@ -36,16 +36,21 @@ export default function Navbar() {
             active={active}
           />
 
-          {/* Resume Button */}
-          <ButtonTheme href="/resume.pdf">
-            Resume
-          </ButtonTheme>
+          {/* Right Side */}
+          <div className="flex items-center gap-4">
+            {/* Desktop Resume Button */}
+            <div className="hidden lg:block">
+              <ButtonTheme href="/resume.pdf">
+                Resume
+              </ButtonTheme>
+            </div>
 
-          {/* Mobile Menu Button */}
-          <MobileMenuButton
-            open={mobileMenu}
-            onClick={() => setMobileMenu(!mobileMenu)}
-          />
+            {/* Mobile Menu Button */}
+            <MobileMenuButton
+              open={mobileMenu}
+              onClick={() => setMobileMenu(!mobileMenu)}
+            />
+          </div>
         </div>
       </header>
 
