@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  createContext,
-  useContext,
-  useState,
-} from "react";
+import { createContext, useContext, useState } from "react";
 
 type ContextType = {
   active: string;
@@ -33,8 +29,9 @@ export function ActiveSectionProvider({
 export function useActiveSection() {
   const context = useContext(ActiveSectionContext);
 
-  if (!context)
+  if (!context) {
     throw new Error("Provider missing");
+  }
 
   return context;
 }
