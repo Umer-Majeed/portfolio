@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import Navbarn from "@/components/navigation/Navbarn";
+import Navbar from "@/components/navigation/Navbar";
 import Footer from "@/components/layout/Footer";
 
 import Hero from "@/components/sections/Hero";
@@ -14,6 +14,7 @@ import Contact from "@/components/sections/Contact";
 import Github from "@/components/sections/Github";
 import GithubCalendar from "@/components/sections/GithubCalendar";
 import BootScreen from "@/components/ui/BootScreen";
+
 
 export default function Home() {
   const [loadingFinished, setLoadingFinished] = useState(false);
@@ -29,7 +30,7 @@ export default function Home() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#050816] text-white">
       {/* Premium AI Navbar */}
-      <Navbarn />
+      <Navbar />
 
       {/* Hero */}
       <Hero />
