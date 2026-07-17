@@ -3,9 +3,10 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import ButtonTheme from "../ui/Button"
-import { navItems } from "@/data/navigation";
 
+import ButtonTheme from "../ui/Button";
+import Logo from "./Logo";
+import { navItems } from "@/data/navigation";
 
 export default function Navbar() {
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -17,7 +18,7 @@ export default function Navbar() {
       setScrolled(window.scrollY > 40);
 
       const sections = navItems.map((item) =>
-        document.querySelector(item.href),
+        document.querySelector(item.href)
       );
 
       sections.forEach((section) => {
@@ -44,23 +45,15 @@ export default function Navbar() {
       <header
         className={`fixed left-0 top-0 z-50 w-full transition-all duration-500 ${
           scrolled
-            ? "backdrop-blur-2xl bg-black/55 border-b border-cyan-400/20 shadow-[0_0_40px_rgba(0,245,255,.08)]"
+            ? "border-b border-cyan-400/20 bg-black/55 backdrop-blur-2xl shadow-[0_0_40px_rgba(0,245,255,.08)]"
             : "bg-transparent"
         }`}
       >
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
           {/* Logo */}
+          <Logo />
 
-          <a href="#home" className="group text-2xl font-black tracking-wider">
-            <span className="text-white">UMER</span>
-
-            <span className="text-cyan-400 group-hover:drop-shadow-[0_0_10px_cyan]">
-              .OS
-            </span>
-          </a>
-
-          {/* Desktop */}
-
+          {/* Desktop Navigation */}
           <nav className="hidden items-center gap-8 lg:flex">
             {navItems.map((item) => (
               <a
@@ -77,11 +70,12 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Resume */}
-            
-          <ButtonTheme children="Resume" href="./resume.pdf"></ButtonTheme>
-          {/* Mobile */}
+          {/* Resume Button */}
+          <ButtonTheme href="./resume.pdf">
+            Resume
+          </ButtonTheme>
 
+          {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenu(!mobileMenu)}
             className="lg:hidden"
@@ -92,23 +86,13 @@ export default function Navbar() {
       </header>
 
       {/* Mobile Menu */}
-
       <AnimatePresence>
         {mobileMenu && (
           <motion.div
-            initial={{
-              opacity: 0,
-              y: -20,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            exit={{
-              opacity: 0,
-              y: -20,
-            }}
-            className="fixed top-20 left-4 right-4 z-40 rounded-3xl border border-cyan-400/20 bg-[#07111d]/95 backdrop-blur-2xl lg:hidden"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed left-4 right-4 top-20 z-40 rounded-3xl border border-cyan-400/20 bg-[#07111d]/95 backdrop-blur-2xl lg:hidden"
           >
             <div className="flex flex-col p-6">
               {navItems.map((item) => (
