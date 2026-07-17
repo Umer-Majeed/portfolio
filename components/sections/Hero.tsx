@@ -94,30 +94,7 @@ export default function Hero() {
 
         {/* Status Cards */}
 
-<div className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-3">
 
-  <div className="rounded-2xl border border-cyan-400/20 bg-white/5 backdrop-blur-xl p-5">
-    <p className="text-gray-400 text-sm">Projects</p>
-    <h3 className="text-3xl font-bold text-cyan-400">
-      10+
-    </h3>
-  </div>
-
-  <div className="rounded-2xl border border-cyan-400/20 bg-white/5 backdrop-blur-xl p-5">
-    <p className="text-gray-400 text-sm">Technologies</p>
-    <h3 className="text-3xl font-bold text-cyan-400">
-      15+
-    </h3>
-  </div>
-
-  <div className="rounded-2xl border border-cyan-400/20 bg-white/5 backdrop-blur-xl p-5">
-    <p className="text-gray-400 text-sm">Status</p>
-    <h3 className="text-3xl font-bold text-green-400">
-      Available
-    </h3>
-  </div>
-
-</div>
 
         {/* RIGHT SIDE */}
 
@@ -152,7 +129,30 @@ export default function Hero() {
           </div>
 
         </motion.div>
+<div className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-3">
 
+  <div className="rounded-2xl border border-cyan-400/20 bg-white/5 backdrop-blur-xl p-5">
+    <p className="text-gray-400 text-sm">Projects</p>
+    <h3 className="text-3xl font-bold text-cyan-400">
+      10+
+    </h3>
+  </div>
+
+  <div className="rounded-2xl border border-cyan-400/20 bg-white/5 backdrop-blur-xl p-5">
+    <p className="text-gray-400 text-sm">Technologies</p>
+    <h3 className="text-3xl font-bold text-cyan-400">
+      15+
+    </h3>
+  </div>
+
+  <div className="rounded-2xl border border-cyan-400/20 bg-white/5 backdrop-blur-xl p-5">
+    <p className="text-gray-400 text-sm">Status</p>
+    <h3 className="text-3xl font-bold text-green-400">
+      Available
+    </h3>
+  </div>
+
+</div>
       </div>
     </section>
   );

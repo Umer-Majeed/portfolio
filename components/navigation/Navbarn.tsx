@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import ButtonTheme from "../ui/Button"
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -23,7 +24,7 @@ export default function Navbar() {
       setScrolled(window.scrollY > 40);
 
       const sections = navItems.map((item) =>
-        document.querySelector(item.href)
+        document.querySelector(item.href),
       );
 
       sections.forEach((section) => {
@@ -32,10 +33,7 @@ export default function Navbar() {
         const top = (section as HTMLElement).offsetTop - 120;
         const height = (section as HTMLElement).offsetHeight;
 
-        if (
-          window.scrollY >= top &&
-          window.scrollY < top + height
-        ) {
+        if (window.scrollY >= top && window.scrollY < top + height) {
           setActive(section.id);
         }
       });
@@ -45,8 +43,7 @@ export default function Navbar() {
 
     window.addEventListener("scroll", handleScroll);
 
-    return () =>
-      window.removeEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -59,13 +56,9 @@ export default function Navbar() {
         }`}
       >
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
-
           {/* Logo */}
 
-          <a
-            href="#home"
-            className="group text-2xl font-black tracking-wider"
-          >
+          <a href="#home" className="group text-2xl font-black tracking-wider">
             <span className="text-white">UMER</span>
 
             <span className="text-cyan-400 group-hover:drop-shadow-[0_0_10px_cyan]">
@@ -92,25 +85,15 @@ export default function Navbar() {
           </nav>
 
           {/* Resume */}
-
-          <a
-            href="/resume.pdf"
-            className="hidden rounded-xl bg-cyan-400 px-6 py-3 font-semibold text-black transition hover:scale-105 lg:block"
-          >
-            Resume
-          </a>
-
+            
+          <ButtonTheme children="Resume" href="./resume.pdf"></ButtonTheme>
           {/* Mobile */}
 
           <button
             onClick={() => setMobileMenu(!mobileMenu)}
             className="lg:hidden"
           >
-            {mobileMenu ? (
-              <X size={30} />
-            ) : (
-              <Menu size={30} />
-            )}
+            {mobileMenu ? <X size={30} /> : <Menu size={30} />}
           </button>
         </div>
       </header>
