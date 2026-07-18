@@ -9,6 +9,7 @@ export default function useNavbar() {
 
   const active = useActiveSection();
 
+  // Navbar background on scroll
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
@@ -18,9 +19,22 @@ export default function useNavbar() {
 
     window.addEventListener("scroll", handleScroll);
 
-    return () => {
+    return () =>
       window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Close mobile menu when screen becomes desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setMobileMenu(false);
+      }
     };
+
+    window.addEventListener("resize", handleResize);
+
+    return () =>
+      window.removeEventListener("resize", handleResize);
   }, []);
 
   return {
