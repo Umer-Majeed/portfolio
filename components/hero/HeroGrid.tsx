@@ -1,10 +1,22 @@
 "use client";
 
+import { motion } from "framer-motion";
+
 export default function HeroGrid() {
   return (
     <>
-      {/* Vertical Lines */}
-      <div
+      <motion.div
+        animate={{
+          backgroundPosition: [
+            "0px 0px",
+            "0px 70px",
+          ],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "linear",
+        }}
         className="
           absolute
           inset-0
@@ -20,7 +32,6 @@ export default function HeroGrid() {
         }}
       />
 
-      {/* Radial Fade */}
       <div
         className="
           absolute

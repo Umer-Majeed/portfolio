@@ -1,10 +1,20 @@
 "use client";
 
+import { motion } from "framer-motion";
+
 export default function HeroGlow() {
   return (
     <>
-      {/* Top Left Glow */}
-      <div
+      <motion.div
+        animate={{
+          scale: [1, 1.15, 1],
+          opacity: [0.15, 0.25, 0.15],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
         className="
           absolute
           -left-40
@@ -12,14 +22,23 @@ export default function HeroGlow() {
           h-[500px]
           w-[500px]
           rounded-full
-          bg-cyan-400/15
+          bg-cyan-400
           blur-[180px]
           pointer-events-none
         "
+        style={{ opacity: 0.15 }}
       />
 
-      {/* Bottom Right Glow */}
-      <div
+      <motion.div
+        animate={{
+          scale: [1.1, 0.95, 1.1],
+          opacity: [0.08, 0.18, 0.08],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
         className="
           absolute
           -right-40
@@ -27,27 +46,11 @@ export default function HeroGlow() {
           h-[500px]
           w-[500px]
           rounded-full
-          bg-cyan-400/10
-          blur-[200px]
+          bg-cyan-400
+          blur-[220px]
           pointer-events-none
         "
-      />
-
-      {/* Center Glow */}
-      <div
-        className="
-          absolute
-          left-1/2
-          top-1/2
-          h-[350px]
-          w-[350px]
-          -translate-x-1/2
-          -translate-y-1/2
-          rounded-full
-          bg-cyan-400/10
-          blur-[150px]
-          pointer-events-none
-        "
+        style={{ opacity: 0.1 }}
       />
     </>
   );

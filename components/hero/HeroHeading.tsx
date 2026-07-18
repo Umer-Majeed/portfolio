@@ -1,13 +1,18 @@
 "use client";
 
-export default function HeroHeading() {
+export default function HeroScroll() {
   return (
-    <h1 className="text-6xl font-black leading-tight text-white lg:text-8xl">
-      MUHAMMAD
-
-      <span className="block text-cyan-400">
-        UMER
+    <div
+      className="
+        absolute
+        bottom-10
+        left-1/2
+        -translate-x-1/2
+      "
+    >
+      <span className="text-sm text-[#BDBDBD]">
+        Scroll
       </span>
-    </h1>
+    </div>
   );
 }

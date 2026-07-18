@@ -1,17 +1,12 @@
 export const colors = {
-  background: "#3B3B3B",
+  background: "#2B2B2B",
+  surface: "#323232",
+  card: "#3B3B3B",
+  cardHover: "#454545",
 
-  white: "#FFFFFF",
-
+  heading: "#FFFFFF",
   text: "#BDBDBD",
+  muted: "#8E8E8E",
 
-  primary: "#00F5FF",
-
-  primaryDark: "#00D4E3",
-
-  border: "rgba(255,255,255,.10)",
-
-  card: "rgba(255,255,255,.04)",
-
-  cardHover: "rgba(255,255,255,.08)",
+  border: "rgba(255,255,255,.08)",
 } as const;

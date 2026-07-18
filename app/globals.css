@@ -1,26 +1,28 @@
 @import "tailwindcss";
 
 :root {
-  /* Main Theme */
-  --background: #3B3B3B;
+  /* Background */
+  --background: #2B2B2B;
 
-  /* Cards */
-  --card: rgba(255, 255, 255, 0.04);
-  --card-hover: rgba(255, 255, 255, 0.08);
-
-  /* Accent */
-  --primary: #00F5FF;
-  --primary-dark: #00D4E3;
+  /* Surfaces */
+  --surface: #323232;
+  --card: #3B3B3B;
+  --card-hover: #454545;
 
   /* Typography */
-  --text: #FFFFFF;
-  --muted: #BDBDBD;
+  --heading: #FFFFFF;
+  --text: #BDBDBD;
+  --muted: #8E8E8E;
+
+  /* Accent (Neutral) */
+  --primary: #FFFFFF;
+  --primary-dark: #E5E5E5;
 
   /* Border */
-  --border: rgba(255, 255, 255, 0.10);
+  --border: rgba(255, 255, 255, 0.08);
 
   /* Shadow */
-  --shadow: 0 0 30px rgba(0, 245, 255, 0.15);
+  --shadow: 0 12px 40px rgba(0, 0, 0, 0.30);
 
   scroll-behavior: smooth;
 }
@@ -29,6 +31,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+*::selection {
+  background: rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
 }
 
 html {
@@ -43,4 +50,7 @@ body {
 
   cursor: default;
   overflow-x: hidden;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
