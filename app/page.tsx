@@ -5,7 +5,8 @@ import { useState } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
-import Hero from "@/components/sections/Hero";
+import Hero from "@/components/hero"; // ✅ New Hero
+
 import About from "@/components/sections/About";
 import Projects from "@/components/sections/Projects";
 import Skills from "@/components/sections/Skills";
@@ -13,8 +14,8 @@ import Experience from "@/components/sections/Experience";
 import Contact from "@/components/sections/Contact";
 import Github from "@/components/sections/Github";
 import GithubCalendar from "@/components/sections/GithubCalendar";
-import BootScreen from "@/components/ui/BootScreen";
 
+import BootScreen from "@/components/ui/BootScreen";
 
 export default function Home() {
   const [loadingFinished, setLoadingFinished] = useState(false);
@@ -28,11 +29,11 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-[#050816] text-white">
-      {/* Premium AI Navbar */}
+    <main className="min-h-screen overflow-x-hidden bg-[var(--background)] text-[var(--text)]">
+      {/* Navbar */}
       <Navbar />
 
-      {/* Hero */}
+      {/* AI Hero */}
       <Hero />
 
       {/* About */}
@@ -47,8 +48,9 @@ export default function Home() {
       {/* Experience */}
       <Experience />
 
-<Github />
-<GithubCalendar />
+      {/* Github */}
+      <Github />
+      <GithubCalendar />
 
       {/* Contact */}
       <Contact />
