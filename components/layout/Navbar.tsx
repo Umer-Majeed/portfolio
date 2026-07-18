@@ -9,6 +9,12 @@ import MobileMenuButton from "./MobileMenuButton";
 import { navItems } from "@/data/navigation";
 import useNavbar from "@/hooks/useNavbar";
 
+import {
+  navbarBase,
+  navbarScrolled,
+  navbarTop,
+} from "@/lib/navbar";
+
 export default function Navbar() {
   const {
     mobileMenu,
@@ -39,21 +45,11 @@ export default function Navbar() {
       >
         <div
           className={`
-            mx-auto
-            flex
-            h-20
-            max-w-7xl
-            items-center
-            justify-between
-            rounded-full
-            border
-            px-8
-            transition-all
-            duration-500
+            ${navbarBase}
             ${
               scrolled
-                ? "border-cyan-400/20 bg-black/60 backdrop-blur-2xl shadow-[0_15px_50px_rgba(0,245,255,.12)]"
-                : "border-white/10 bg-white/5 backdrop-blur-xl"
+                ? navbarScrolled
+                : navbarTop
             }
           `}
         >

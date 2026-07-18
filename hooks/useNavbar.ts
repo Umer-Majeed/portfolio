@@ -1,45 +1,43 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useActiveSection from "./useActiveSection";
 
 export default function useNavbar() {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [visible, setVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const lastScrollY = useRef(0);
 
   const active = useActiveSection();
 
-  // Navbar background + Hide/Show on scroll
   useEffect(() => {
     const handleScroll = () => {
       const currentScroll = window.scrollY;
 
       setScrolled(currentScroll > 40);
 
-      if (currentScroll < 20) {
+      if (currentScroll <= 50) {
         setVisible(true);
-      } else if (currentScroll > lastScrollY) {
-        // Scrolling Down
+      } else if (currentScroll > lastScrollY.current) {
+        // scrolling down
         setVisible(false);
       } else {
-        // Scrolling Up
+        // scrolling up
         setVisible(true);
       }
 
-      setLastScrollY(currentScroll);
+      lastScrollY.current = currentScroll;
     };
-
-    handleScroll();
 
     window.addEventListener("scroll", handleScroll);
 
-    return () =>
+    return () => {
       window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+    };
+  }, []);
 
-  // Close mobile menu when screen becomes desktop
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
@@ -49,11 +47,11 @@ export default function useNavbar() {
 
     window.addEventListener("resize", handleResize);
 
-    return () =>
+    return () => {
       window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = mobileMenu ? "hidden" : "";
 
@@ -62,7 +60,6 @@ export default function useNavbar() {
     };
   }, [mobileMenu]);
 
-  // Actions
   const toggleMobileMenu = () => {
     setMobileMenu((prev) => !prev);
   };
@@ -76,7 +73,6 @@ export default function useNavbar() {
     scrolled,
     visible,
     active,
-
     toggleMobileMenu,
     closeMobileMenu,
   };
