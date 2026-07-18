@@ -1,6 +1,6 @@
 "use client";
 
-import ButtonTheme from "../ui/Button";
+import ResumeButton from "./ResumeButton";
 import Logo from "./Logo";
 import NavLinks from "./NavLinks";
 import MobileMenu from "./MobileMenu";
@@ -65,11 +65,7 @@ export default function Navbar() {
           {/* Right Side */}
           <div className="flex items-center gap-4">
             {/* Resume Button */}
-            <div className="hidden lg:block">
-              <ButtonTheme href="/resume.pdf">
-                Resume
-              </ButtonTheme>
-            </div>
+           <ResumeButton />
 
             {/* Mobile Menu Button */}
             <MobileMenuButton
