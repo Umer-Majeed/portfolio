@@ -37,10 +37,34 @@ export default function useNavbar() {
       window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Lock body scroll
+  useEffect(() => {
+    if (mobileMenu) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenu]);
+
+  // Actions
+  const toggleMobileMenu = () => {
+    setMobileMenu((prev) => !prev);
+  };
+
+  const closeMobileMenu = () => {
+    setMobileMenu(false);
+  };
+
   return {
     mobileMenu,
-    setMobileMenu,
     scrolled,
     active,
+
+    toggleMobileMenu,
+    closeMobileMenu,
   };
 }
