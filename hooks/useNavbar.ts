@@ -6,13 +6,29 @@ import useActiveSection from "./useActiveSection";
 export default function useNavbar() {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const active = useActiveSection();
 
-  // Navbar background on scroll
+  // Navbar background + Hide/Show on scroll
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
+      const currentScroll = window.scrollY;
+
+      setScrolled(currentScroll > 40);
+
+      if (currentScroll < 20) {
+        setVisible(true);
+      } else if (currentScroll > lastScrollY) {
+        // Scrolling Down
+        setVisible(false);
+      } else {
+        // Scrolling Up
+        setVisible(true);
+      }
+
+      setLastScrollY(currentScroll);
     };
 
     handleScroll();
@@ -21,7 +37,7 @@ export default function useNavbar() {
 
     return () =>
       window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   // Close mobile menu when screen becomes desktop
   useEffect(() => {
@@ -37,13 +53,9 @@ export default function useNavbar() {
       window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Lock body scroll
+  // Lock body scroll when mobile menu is open
   useEffect(() => {
-    if (mobileMenu) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = mobileMenu ? "hidden" : "";
 
     return () => {
       document.body.style.overflow = "";
@@ -62,6 +74,7 @@ export default function useNavbar() {
   return {
     mobileMenu,
     scrolled,
+    visible,
     active,
 
     toggleMobileMenu,

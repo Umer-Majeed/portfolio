@@ -13,6 +13,7 @@ export default function Navbar() {
   const {
     mobileMenu,
     scrolled,
+    visible,
     active,
     toggleMobileMenu,
     closeMobileMenu,
@@ -20,7 +21,22 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-5 z-50 px-4">
+      <header
+        className={`
+          fixed
+          inset-x-0
+          top-5
+          z-50
+          px-4
+          transition-transform
+          duration-500
+          ${
+            visible
+              ? "translate-y-0"
+              : "-translate-y-32"
+          }
+        `}
+      >
         <div
           className={`
             mx-auto
