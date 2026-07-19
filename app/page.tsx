@@ -13,7 +13,6 @@ import Skills from "@/components/sections/Skills";
 import Experience from "@/components/sections/Experience";
 import Contact from "@/components/sections/Contact";
 import Github from "@/components/sections/Github";
-import GithubCalendar from "@/components/sections/GithubCalendar";
 
 import BootScreen from "@/components/ui/BootScreen";
 
@@ -50,7 +49,7 @@ export default function Home() {
 
       {/* Github */}
       <Github />
-      <GithubCalendar />
+      
 
       {/* Contact */}
       <Contact />
