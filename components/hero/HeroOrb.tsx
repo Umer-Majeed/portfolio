@@ -1,17 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
+import HeroParticles from "./HeroParticles";
+import HeroScanner from "./HeroScanner";
 
 export default function HeroOrb() {
   return (
-    <div className="relative flex items-center justify-center">
+    <div className="relative flex h-[520px] w-[520px] items-center justify-center">
 
       {/* Ambient Glow */}
-
       <motion.div
         animate={{
-          scale: [1, 1.12, 1],
-          opacity: [0.25, 0.45, 0.25],
+          scale: [1, 1.15, 1],
+          opacity: [0.2, 0.45, 0.2],
         }}
         transition={{
           duration: 5,
@@ -20,23 +21,20 @@ export default function HeroOrb() {
         }}
         className="
           absolute
-          h-[260px]
-          w-[260px]
+          h-[280px]
+          w-[280px]
           rounded-full
           bg-cyan-400/20
-          blur-[90px]
+          blur-[100px]
         "
       />
 
       {/* Outer Ring */}
-
       <motion.div
-        animate={{
-          rotate: 360,
-        }}
+        animate={{ rotate: 360 }}
         transition={{
-          repeat: Infinity,
           duration: 28,
+          repeat: Infinity,
           ease: "linear",
         }}
         className="
@@ -50,14 +48,11 @@ export default function HeroOrb() {
       />
 
       {/* Middle Ring */}
-
       <motion.div
-        animate={{
-          rotate: -360,
-        }}
+        animate={{ rotate: -360 }}
         transition={{
-          repeat: Infinity,
           duration: 18,
+          repeat: Infinity,
           ease: "linear",
         }}
         className="
@@ -71,7 +66,6 @@ export default function HeroOrb() {
       />
 
       {/* Inner Ring */}
-
       <motion.div
         animate={{
           rotate: 360,
@@ -79,13 +73,14 @@ export default function HeroOrb() {
         }}
         transition={{
           rotate: {
-            repeat: Infinity,
             duration: 10,
+            repeat: Infinity,
             ease: "linear",
           },
           scale: {
-            repeat: Infinity,
             duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
           },
         }}
         className="
@@ -98,17 +93,44 @@ export default function HeroOrb() {
         "
       />
 
-      {/* Core */}
+      {/* Orbiting Particles */}
+    <HeroParticles />
+<HeroScanner />
 
+      {/* Core Glow */}
       <motion.div
         animate={{
-          scale: [1, 1.12, 1],
+          scale: [1, 1.18, 1],
+          opacity: [0.5, 0.8, 0.5],
         }}
         transition={{
-          repeat: Infinity,
           duration: 2,
+          repeat: Infinity,
+          ease: "easeInOut",
         }}
         className="
+          absolute
+          h-44
+          w-44
+          rounded-full
+          bg-cyan-400/10
+          blur-[55px]
+        "
+      />
+
+      {/* Core */}
+      <motion.div
+        animate={{
+          scale: [1, 1.1, 1],
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="
+          relative
+          z-20
           h-28
           w-28
           rounded-full
@@ -116,7 +138,6 @@ export default function HeroOrb() {
           shadow-[0_0_80px_rgba(0,245,255,.5)]
         "
       />
-
     </div>
   );
 }
