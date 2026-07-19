@@ -7,6 +7,7 @@ import HeroScanner from "./HeroScanner";
 import HeroEnergyRing from "./HeroEnergyRing";
 import HeroRingNodes from "./HeroRingNodes";
 import HeroCore from "./HeroCore";
+import HeroConnectionLines from "./HeroConnectionLines";
 
 export default function HeroOrb() {
   return (
@@ -131,6 +132,7 @@ export default function HeroOrb() {
       />
 
       {/* AI Core */}
+      <HeroConnectionLines />
       <HeroCore />
 
     </div>
