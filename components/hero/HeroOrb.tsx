@@ -1,10 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+
 import HeroParticles from "./HeroParticles";
 import HeroScanner from "./HeroScanner";
 import HeroEnergyRing from "./HeroEnergyRing";
 import HeroRingNodes from "./HeroRingNodes";
+import HeroCore from "./HeroCore";
 
 export default function HeroOrb() {
   return (
@@ -31,6 +33,9 @@ export default function HeroOrb() {
         "
       />
 
+      {/* Energy Ring */}
+      <HeroEnergyRing />
+
       {/* Outer Ring */}
       <motion.div
         animate={{ rotate: 360 }}
@@ -49,6 +54,9 @@ export default function HeroOrb() {
         "
       />
 
+      {/* Ring Nodes */}
+      <HeroRingNodes />
+
       {/* Middle Ring */}
       <motion.div
         animate={{ rotate: -360 }}
@@ -66,6 +74,9 @@ export default function HeroOrb() {
           border-cyan-400/20
         "
       />
+
+      {/* Scanner */}
+      <HeroScanner />
 
       {/* Inner Ring */}
       <motion.div
@@ -95,13 +106,8 @@ export default function HeroOrb() {
         "
       />
 
-
-      {/* Orbiting Particles */}
-       
-    <HeroParticles />
-   <HeroEnergyRing />
-    <HeroRingNodes />
-<HeroScanner />
+      {/* Orbit Particles */}
+      <HeroParticles />
 
       {/* Core Glow */}
       <motion.div
@@ -124,26 +130,9 @@ export default function HeroOrb() {
         "
       />
 
-      {/* Core */}
-      <motion.div
-        animate={{
-          scale: [1, 1.1, 1],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="
-          relative
-          z-20
-          h-28
-          w-28
-          rounded-full
-          bg-cyan-400
-          shadow-[0_0_80px_rgba(0,245,255,.5)]
-        "
-      />
+      {/* AI Core */}
+      <HeroCore />
+
     </div>
   );
 }
