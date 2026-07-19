@@ -5,6 +5,7 @@ import HeroContent from "./HeroContent";
 import HeroImage from "./HeroImage";
 import HeroScroll from "./HeroScroll";
 import HeroConsole from "./HeroConsole";
+import HeroStats from "./HeroStats";
 
 export default function Hero() {
   return (
@@ -13,22 +14,29 @@ export default function Hero() {
       className="relative min-h-screen overflow-hidden"
     >
       <HeroBackground />
-<HeroConsole />
+
+      <HeroConsole />
+
       <div
         className={`
           ${container}
           relative
           z-10
-          flex
           min-h-screen
+          grid
           items-center
-          justify-between
-          gap-20
+          gap-12
+          lg:grid-cols-[1fr_auto_320px]
         `}
       >
+        {/* Left */}
         <HeroContent />
 
+        {/* Center */}
         <HeroImage />
+
+        {/* Right */}
+        <HeroStats />
       </div>
 
       <HeroScroll />
