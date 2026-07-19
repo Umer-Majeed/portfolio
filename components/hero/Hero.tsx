@@ -6,6 +6,7 @@ import HeroImage from "./HeroImage";
 import HeroScroll from "./HeroScroll";
 import HeroConsole from "./HeroConsole";
 import HeroStats from "./HeroStats";
+import HeroMouseGlow from "./HeroMouseGlow";
 
 export default function Hero() {
   return (
@@ -14,7 +15,7 @@ export default function Hero() {
       className="relative min-h-screen overflow-hidden"
     >
       <HeroBackground />
-
+<HeroMouseGlow />
       <HeroConsole />
 
       <div

@@ -3,6 +3,8 @@
 import HeroGrid from "./HeroGrid";
 import HeroGlow from "./HeroGlow";
 import HeroParticles from "./HeroParticles";
+import HeroNoise from "./HeroNoise";
+import HeroScanLines from "./HeroScanLines";
 
 export default function HeroBackground() {
   return (
@@ -10,28 +12,29 @@ export default function HeroBackground() {
       {/* Base Background */}
       <div className="absolute inset-0 bg-[var(--background)]" />
 
-      {/* Grid */}
+      {/* Animated Grid */}
       <HeroGrid />
 
-      {/* Glow */}
+      {/* Ambient Glow */}
       <HeroGlow />
 
-      {/* Particles */}
+      {/* Floating Background Particles */}
       <HeroParticles />
 
-      {/* Noise Layer */}
+      {/* Display Noise */}
+      <HeroNoise />
+
+      {/* CRT Scan Lines */}
+      <HeroScanLines />
+
+      {/* Vignette */}
       <div
         className="
           absolute
           inset-0
-          opacity-[0.03]
-          mix-blend-soft-light
+          bg-[radial-gradient(circle_at_center,transparent_15%,rgba(0,0,0,.55)_100%)]
           pointer-events-none
         "
-        style={{
-          backgroundImage:
-            "url('https://grainy-gradients.vercel.app/noise.svg')",
-        }}
       />
     </>
   );

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import HeroParticles from "./HeroParticles";
 import HeroScanner from "./HeroScanner";
-
+import HeroRingNodes from "./HeroRingNodes";
 export default function HeroOrb() {
   return (
     <div className="relative flex h-[520px] w-[520px] items-center justify-center">
@@ -95,6 +95,7 @@ export default function HeroOrb() {
 
       {/* Orbiting Particles */}
     <HeroParticles />
+    <HeroRingNodes />
 <HeroScanner />
 
       {/* Core Glow */}
