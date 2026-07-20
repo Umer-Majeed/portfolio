@@ -12,7 +12,7 @@ import HeroConnectionLines from "./HeroConnectionLines";
 import HeroHUD from "./HeroHUD";
 import HeroMagnetic from "./HeroMagnetic";
 import HeroElectricalArcs from "./HeroElectricalArcs";
-
+import HeroDataStreams from "./HeroDataStreams";
 export default function HeroOrb() {
   return (
     <HeroMagnetic>
@@ -115,6 +115,7 @@ export default function HeroOrb() {
         {/* Orbit Particles */}
         <HeroParticles />
 <HeroSatellites />
+<HeroDataStreams />
         {/* Connection Lines */}
         <HeroConnectionLines />
 
