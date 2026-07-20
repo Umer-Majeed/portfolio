@@ -1,56 +1,49 @@
 "use client";
 
-import { motion } from "framer-motion";
-import ContactForm from "@/components/contact/ContactForm";
+import ContactBackground from "@/components/contact/ContactBackground";
+import ContactGrid from "@/components/contact/ContactGrid";
+import ContactHeader from "@/components/contact/ContactHeader";
 import ContactInfo from "@/components/contact/ContactInfo";
-import SocialLinks from "@/components/contact/SocialLinks";
-import AvailabilityCard from "@/components/contact/AvailabilityCard";
+import ContactSocials from "@/components/contact/ContactSocials";
+import ContactTerminal from "@/components/contact/ContactTerminal";
+import ContactForm from "@/components/contact/ContactForm";
 
 export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative min-h-screen bg-[#050816] px-6 py-24"
+      className="
+        relative
+        overflow-hidden
+        bg-[#050816]
+        px-6
+        py-24
+      "
     >
-      <div className="mx-auto max-w-7xl">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="mb-20"
-        >
-          <p className="mb-4 text-sm font-medium uppercase tracking-[0.35em] text-cyan-400">
-            CONTACT
-          </p>
+      <ContactBackground />
 
-          <h2 className="text-4xl font-black leading-tight md:text-6xl">
-            Let's Build Something Amazing
-          </h2>
+      <ContactGrid>
 
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-gray-400">
-            Interested in Artificial Intelligence, Full Stack Development,
-            UI/UX Design, or collaborating on exciting projects? Feel free to
-            reach out anytime.
-          </p>
+        <ContactHeader />
 
-          <div className="mt-6 h-1 w-28 rounded-full bg-cyan-400"></div>
-        </motion.div>
+        <div className="mt-20 grid gap-10 lg:grid-cols-[420px_1fr]">
 
-        {/* Layout */}
-        <div className="grid gap-12 lg:grid-cols-[420px_1fr]">
-          {/* Left */}
           <div className="space-y-8">
+
             <ContactInfo />
-            <SocialLinks />
-            <AvailabilityCard />
+
+            <ContactSocials />
+
+            <ContactTerminal />
+
           </div>
 
-          {/* Right */}
           <ContactForm />
+
         </div>
-      </div>
+
+      </ContactGrid>
+
     </section>
   );
 }

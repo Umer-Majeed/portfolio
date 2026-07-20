@@ -1,20 +1,35 @@
 "use client";
 
-import { container, section } from "@/lib/layout";
-
-import ExperienceHeader from "./experience/ExperienceHeader";
-import SystemTimeline from "./experience/SystemTimeline";
+import ExperienceHeader from "@/components/experience/ExperienceHeader";
+import ExperienceStats from "@/components/experience/ExperienceStats";
+import ExperienceTimeline from "@/components/experience/ExperienceTimeline";
+import ExperienceTerminal from "@/components/experience/ExperienceTerminal";
+import ExperienceBackground from "@/components/experience/ExperienceBackground";
 
 export default function Experience() {
   return (
     <section
       id="experience"
-      className={section}
+      className="
+        relative
+        overflow-hidden
+        bg-[#050816]
+        px-6
+        py-24
+      "
     >
-      <div className={container}>
+      <ExperienceBackground />
+
+      <div className="relative mx-auto max-w-7xl">
+
         <ExperienceHeader />
 
-        <SystemTimeline />
+        <ExperienceStats />
+
+        <ExperienceTimeline />
+
+        <ExperienceTerminal />
+
       </div>
     </section>
   );
