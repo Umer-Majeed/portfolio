@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search } from "lucide-react";
 import ProjectCard from "@/components/projects/ProjectCard";
-import ProjectModal from "@/components/projects/ProjectModal";
+import ProjectModal from "@/components/sections/projects/ProjectModal";
 import { projects } from "@/data/projects";
 
 export default function Projects() {
@@ -258,12 +258,11 @@ ${
 
         {/* Modal */}
         <ProjectModal
-          project={selectedProject}
-          isOpen={selectedProject !== null}
-          onClose={() =>
-            setSelectedProject(null)
-          }
-        />
+  project={selectedProject}
+  isOpen={selectedProject !== null}
+  onClose={() => setSelectedProject(null)}
+/>
+       
       </div>
     </section>
   );
