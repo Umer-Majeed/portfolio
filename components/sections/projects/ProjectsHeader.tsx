@@ -1,52 +1,49 @@
 "use client";
 
-import { motion } from "framer-motion";
+import {
+  Circle
+} from "lucide-react";
 
-export default function ProjectsHeader() {
+export default function ProjectHeader() {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: .7 }}
-      className="mb-20"
+    <div
+      className="
+        flex
+        items-center
+        justify-between
+        border-b
+        border-white/10
+        px-6
+        py-4
+      "
     >
-      <p
+      <div className="flex gap-2">
+
+        <div className="h-3 w-3 rounded-full bg-red-500"/>
+
+        <div className="h-3 w-3 rounded-full bg-yellow-400"/>
+
+        <div className="h-3 w-3 rounded-full bg-green-500"/>
+
+      </div>
+
+      <div
         className="
           font-mono
-          text-sm
-          tracking-[6px]
-          text-cyan-400
+          text-xs
+          tracking-[3px]
+          text-white/50
         "
       >
-        MISSION ARCHIVE
-      </p>
+        PROJECT.EXE
+      </div>
 
-      <h2
-        className="
-          mt-5
-          text-5xl
-          font-black
-          text-white
-        "
-      >
-        Selected
-        <br />
-        Missions.
-      </h2>
+      <Circle
+        size={12}
+        className="text-cyan-400"
+        fill="currentColor"
+      />
 
-      <p
-        className="
-          mt-8
-          max-w-2xl
-          text-lg
-          leading-8
-          text-[#BDBDBD]
-        "
-      >
-        Every project represents a solved problem,
-        not just another UI.
-      </p>
-    </motion.div>
+    </div>
   );
 }

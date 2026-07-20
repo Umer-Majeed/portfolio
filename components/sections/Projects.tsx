@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
+import { Search } from "lucide-react";
 import ProjectCard from "@/components/projects/ProjectCard";
 import ProjectModal from "@/components/projects/ProjectModal";
 import { projects } from "@/data/projects";
@@ -51,66 +51,125 @@ export default function Projects() {
     >
       <div className="mx-auto max-w-7xl">
         {/* Header */}
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 40,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            duration: 0.7,
-          }}
-          className="mb-16"
-        >
-          <p className="mb-4 text-sm font-medium uppercase tracking-[0.35em] text-cyan-400">
-            PROJECTS
-          </p>
+        {/* Header */}
+<motion.div
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: .7 }}
+  className="mb-16"
+>
+  <span
+    className="
+      inline-block
+      rounded-full
+      border
+      border-cyan-400/20
+      bg-cyan-400/5
+      px-4
+      py-2
+      font-mono
+      text-xs
+      tracking-[4px]
+      text-cyan-400
+    "
+  >
+    APPLICATION LIBRARY
+  </span>
 
-          <h2 className="text-4xl font-black leading-tight md:text-6xl">
-            Things I've Built
-          </h2>
+  <h2 className="mt-6 text-5xl font-black md:text-7xl">
+    Projects
+  </h2>
 
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-gray-400">
-            Explore my work in Artificial Intelligence,
-            Machine Learning, Full Stack Development,
-            and modern UI/UX design.
-          </p>
+  <p className="mt-8 max-w-3xl text-lg leading-8 text-gray-400">
+    Browse production-ready applications,
+    AI systems,
+    automation tools,
+    dashboards,
+    APIs,
+    and full-stack software engineered
+    with performance and scalability in mind.
+  </p>
 
-          <div className="mt-6 h-1 w-28 rounded-full bg-cyan-400"></div>
-        </motion.div>
+  <div className="mt-8 flex items-center gap-4">
+
+    <div className="h-[2px] w-24 bg-cyan-400"/>
+
+    <span
+      className="
+        font-mono
+        text-xs
+        tracking-[3px]
+        text-cyan-400
+      "
+    >
+      LIVE INDEX
+    </span>
+
+  </div>
+</motion.div>
 
         {/* Search */}
-        <div className="mb-10">
-          <input
-            type="text"
-            placeholder="Search projects..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="
-              w-full
-              rounded-2xl
-              border
-              border-cyan-400/20
-              bg-white/5
-              px-6
-              py-4
-              text-white
-              outline-none
-              backdrop-blur-xl
-              transition-all
-              duration-300
-              placeholder:text-gray-500
-              focus:border-cyan-400
-              focus:shadow-[0_0_30px_rgba(0,245,255,.20)]
-            "
-          />
-        </div>
+       <div className="relative mb-10">
+
+  <Search
+    size={18}
+    className="
+      absolute
+      left-5
+      top-1/2
+      -translate-y-1/2
+      text-cyan-400
+    "
+  />
+
+  <input
+    type="text"
+    placeholder="Search applications..."
+    value={search}
+    onChange={(e) => setSearch(e.target.value)}
+    className="
+      w-full
+      rounded-2xl
+      border
+      border-white/10
+      bg-white/[0.04]
+      py-4
+      pl-14
+      pr-36
+      text-white
+      outline-none
+      backdrop-blur-xl
+      transition-all
+      duration-300
+      placeholder:text-gray-500
+      focus:border-cyan-400
+      focus:shadow-[0_0_40px_rgba(0,255,255,.18)]
+    "
+  />
+
+  <div
+    className="
+      absolute
+      right-5
+      top-1/2
+      -translate-y-1/2
+      rounded-full
+      border
+      border-green-400/20
+      bg-green-400/10
+      px-3
+      py-1
+      font-mono
+      text-[11px]
+      tracking-[2px]
+      text-green-400
+    "
+  >
+    {filteredProjects.length} MODULES
+  </div>
+
+</div>
 
         {/* Categories */}
         <div className="mb-16 flex flex-wrap gap-4">
@@ -120,20 +179,22 @@ export default function Projects() {
               onClick={() =>
                 setActiveCategory(category)
               }
-              className={`
-                rounded-full
-                px-6
-                py-3
-                text-sm
-                font-semibold
-                transition-all
-                duration-300
-                ${
-                  activeCategory === category
-                    ? "bg-cyan-400 text-black shadow-[0_0_25px_rgba(0,245,255,.35)]"
-                    : "border border-cyan-400/20 bg-white/5 text-gray-300 hover:border-cyan-400 hover:text-cyan-400"
-                }
-              `}
+             className={`
+group
+rounded-xl
+border
+px-5
+py-3
+text-sm
+font-medium
+transition-all
+duration-300
+${
+  activeCategory === category
+    ? "border-cyan-400 bg-cyan-400/10 text-cyan-300 shadow-[0_0_25px_rgba(0,255,255,.2)]"
+    : "border-white/10 bg-white/[0.03] text-gray-400 hover:border-cyan-400/40 hover:text-cyan-300"
+}
+`}
             >
               {category}
             </button>
