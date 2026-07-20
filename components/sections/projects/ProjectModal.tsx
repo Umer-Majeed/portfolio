@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight, X, ExternalLink } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import Image from "next/image";
 import { useState } from "react";
+import ProjectTerminal from "./ProjectTerminal";
 
 type Project = {
   id: number;
@@ -71,6 +72,32 @@ export default function ProjectModal({
               bg-[#08101d]
             "
           >
+            {/* Step 2 — Animated Background Glow */}
+            <div
+              className="
+                absolute
+                -left-40
+                top-20
+                h-96
+                w-96
+                rounded-full
+                bg-cyan-400/10
+                blur-[130px]
+              "
+            />
+            <div
+              className="
+                absolute
+                -right-40
+                bottom-0
+                h-80
+                w-80
+                rounded-full
+                bg-blue-500/10
+                blur-[120px]
+              "
+            />
+
             {/* Close */}
             <button
               onClick={onClose}
@@ -90,13 +117,24 @@ export default function ProjectModal({
 
             {/* Image Slider Container */}
             <div className="relative">
-              <Image
-                src={project.images[currentImage]}
-                alt={project.title}
-                width={1200}
-                height={700}
-                className="h-80 w-full object-cover"
-              />
+              {/* Step 6 — Animate Image Change */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentImage}
+                  initial={{ opacity: 0, scale: 1.05 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.35 }}
+                >
+                  <Image
+                    src={project.images[currentImage]}
+                    alt={project.title}
+                    width={1200}
+                    height={700}
+                    className="h-80 w-full object-cover"
+                  />
+                </motion.div>
+              </AnimatePresence>
 
               {/* Navigation Buttons (Only show if more than 1 image) */}
               {project.images.length > 1 && (
@@ -147,24 +185,34 @@ export default function ProjectModal({
               )}
             </div>
 
-            {/* Bottom Dots Indicator */}
+            {/* Step 5 — Thumbnail Gallery */}
             {project.images.length > 1 && (
-              <div className="mt-5 flex justify-center gap-2">
-                {project.images.map((_, index) => (
+              <div className="mt-5 flex justify-center gap-3 px-6 pb-2">
+                {project.images.map((image, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentImage(index)}
                     className={`
-                      h-2
-                      rounded-full
+                      overflow-hidden
+                      rounded-xl
+                      border-2
                       transition-all
+                      duration-300
                       ${
                         currentImage === index
-                          ? "w-10 bg-cyan-400"
-                          : "w-2 bg-white/20"
+                          ? "border-cyan-400 scale-105"
+                          : "border-white/10 opacity-70 hover:opacity-100"
                       }
                     `}
-                  />
+                  >
+                    <Image
+                      src={image}
+                      alt=""
+                      width={90}
+                      height={60}
+                      className="h-16 w-24 object-cover"
+                    />
+                  </button>
                 ))}
               </div>
             )}
@@ -178,14 +226,77 @@ export default function ProjectModal({
                 {project.title}
               </h2>
 
+              {/* Step 1 — Status Badges */}
+              <div className="mt-4 flex flex-wrap items-center gap-3">
+                <span
+                  className="
+                    rounded-full
+                    border
+                    border-cyan-400/20
+                    bg-cyan-400/10
+                    px-4
+                    py-1
+                    text-xs
+                    font-mono
+                    tracking-[3px]
+                    text-cyan-300
+                  "
+                >
+                  {project.category}
+                </span>
+
+                <span
+                  className="
+                    rounded-full
+                    border
+                    px-4
+                    py-1
+                    text-xs
+                    font-mono
+                    tracking-[3px]
+                    border-green-400/20
+                    bg-green-400/10
+                    text-green-400
+                  "
+                >
+                  {project.status}
+                </span>
+
+                <span
+                  className="
+                    rounded-full
+                    border
+                    border-white/10
+                    bg-white/5
+                    px-4
+                    py-1
+                    text-xs
+                    font-mono
+                    tracking-[3px]
+                    text-gray-300
+                  "
+                >
+                  {project.year}
+                </span>
+              </div>
+
               <p className="mt-6 leading-8 text-gray-400">
                 {project.longDescription}
               </p>
 
               {/* Features */}
               <div className="mt-8">
-                <h3 className="mb-4 text-xl font-bold">
-                  Features
+                {/* Step 4 — Features Header */}
+                <h3
+                  className="
+                    mb-5
+                    font-mono
+                    text-sm
+                    tracking-[4px]
+                    text-cyan-400
+                  "
+                >
+                  FEATURES
                 </h3>
 
                 <div className="grid gap-3 md:grid-cols-2">
@@ -206,8 +317,21 @@ export default function ProjectModal({
                 </div>
               </div>
 
-              {/* Tech */}
-              <div className="mt-8 flex flex-wrap gap-3">
+              {/* Step 3 — Tech Section Header & Tech Stack */}
+              <h3
+                className="
+                  mb-4
+                  mt-10
+                  font-mono
+                  text-sm
+                  tracking-[4px]
+                  text-cyan-400
+                "
+              >
+                TECH STACK
+              </h3>
+
+              <div className="flex flex-wrap gap-3">
                 {project.tech.map((tech) => (
                   <span
                     key={tech}
@@ -227,7 +351,7 @@ export default function ProjectModal({
                 ))}
               </div>
 
-              {/* Buttons */}
+              {/* Step 7 — Premium Hover Buttons */}
               <div className="mt-10 flex gap-4">
                 <a
                   href={project.github}
@@ -243,6 +367,10 @@ export default function ProjectModal({
                     px-6
                     py-3
                     hover:bg-cyan-400/10
+                    hover:border-cyan-400
+                    hover:scale-105
+                    transition-all
+                    duration-300
                   "
                 >
                   <FaGithub />
@@ -264,6 +392,10 @@ export default function ProjectModal({
                       py-3
                       text-black
                       font-semibold
+                      hover:scale-105
+                      hover:shadow-[0_0_25px_rgba(0,255,255,.45)]
+                      transition-all
+                      duration-300
                     "
                   >
                     <ExternalLink size={18} />
@@ -271,6 +403,9 @@ export default function ProjectModal({
                   </a>
                 )}
               </div>
+
+              {/* Project Terminal */}
+              <ProjectTerminal project={project.title} />
             </div>
           </motion.div>
         </motion.div>
