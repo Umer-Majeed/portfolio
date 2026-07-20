@@ -1,9 +1,19 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
-
+import { GitHubCalendar } from "react-github-calendar";
 export default function GithubContribution() {
+  // Custom cyan color theme to match your UI
+  const cyanTheme = {
+    dark: [
+      "#0e1726", // 0 contributions (empty box background)
+      "#083344", // Level 1
+      "#155e75", // Level 2
+      "#0891b2", // Level 3
+      "#22d3ee", // Level 4 (highest)
+    ],
+  };
+
   return (
     <motion.section
       initial={{
@@ -24,20 +34,23 @@ export default function GithubContribution() {
 
       <div
         className="
-          overflow-hidden
+          flex
+          justify-center
+          overflow-x-auto
           rounded-3xl
           border
-          border-white/10
-          bg-white/[0.03]
+          border-cyan-400/20
+          bg-[#08101d]
           p-8
         "
       >
-        <Image
-          src="https://github-readme-activity-graph.vercel.app/graph?username=Umer-Majeed&theme=github-dark&hide_border=true&bg_color=050816&color=22d3ee&line=22d3ee&point=ffffff"
-          alt="GitHub Contribution Graph"
-          width={1200}
-          height={500}
-          className="w-full rounded-xl"
+        <GitHubCalendar
+          username="Umer-Majeed"
+          colorScheme="dark"
+          theme={cyanTheme}
+          blockSize={14}
+          blockMargin={5}
+          fontSize={14}
         />
       </div>
     </motion.section>
