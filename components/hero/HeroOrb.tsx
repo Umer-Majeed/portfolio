@@ -1,5 +1,5 @@
 "use client";
-
+import HeroShield from "./HeroShield";
 import { motion } from "framer-motion";
 import HeroGlyphs from "./HeroGlyphs";
 import HeroCore from "./HeroCore";
@@ -82,7 +82,7 @@ export default function HeroOrb() {
 
         {/* Scanner */}
         <HeroScanner />
-
+<HeroShield />
         {/* Inner Ring */}
         <motion.div
           animate={{
