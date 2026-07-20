@@ -1,79 +1,127 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
-type Props = {
+import ProjectWindow from "./ProjectWindow";
+import ProjectHeader from "./ProjectHeader";
+import ProjectStatus from "./ProjectStatus";
+
+type Project = {
+  id: number;
   title: string;
+  category: string;
   year: string;
+  shortDescription: string;
+  images: string[];
+  tech: string[];
+  github: string;
+  demo: string;
   status: string;
 };
 
+type Props = {
+  project: Project;
+  onClick: () => void;
+};
+
 export default function ProjectCard({
-  title,
-  year,
-  status,
+  project,
+  onClick,
 }: Props) {
   return (
     <motion.div
-      whileHover={{
-        y: -8,
-        borderColor: "rgba(0,245,255,.4)",
-      }}
-      className="
-        group
-        relative
-        overflow-hidden
-        rounded-3xl
-        border
-        border-white/10
-        bg-white/[0.04]
-        p-8
-        backdrop-blur-xl
-        transition-all
-      "
+      layout
+      whileHover={{ y: -8 }}
+      transition={{ duration: 0.3 }}
+      onClick={onClick}
+      className="cursor-pointer"
     >
-      <p className="font-mono text-xs tracking-[4px] text-cyan-400">
-        {year}
-      </p>
+      <ProjectWindow>
 
-      <h3 className="mt-5 text-3xl font-bold text-white">
-        {title}
-      </h3>
+        <ProjectHeader
+          title={project.title}
+          year={project.year}
+          category={project.category}
+        />
 
-      <div className="mt-10 flex items-center justify-between">
-        <span className="text-[#BDBDBD]">
-          {status}
-        </span>
+        {/* Preview */}
+        <div className="relative overflow-hidden rounded-2xl border border-white/10">
 
-        <span
+          <Image
+            src={project.images[0]}
+            alt={project.title}
+            width={1200}
+            height={700}
+            className="
+              h-56
+              w-full
+              object-cover
+              transition-transform
+              duration-700
+              hover:scale-110
+            "
+          />
+
+          <div
+            className="
+              absolute
+              inset-0
+              bg-gradient-to-t
+              from-[#08101d]
+              via-transparent
+              to-transparent
+            "
+          />
+
+        </div>
+
+        {/* Description */}
+
+        <p
           className="
-            font-mono
+            mt-5
             text-sm
-            tracking-[3px]
-            text-cyan-400
+            leading-7
+            text-gray-400
           "
         >
-          OPEN →
-        </span>
-      </div>
+          {project.shortDescription}
+        </p>
 
-      <motion.div
-        initial={{ x: "-100%" }}
-        whileHover={{ x: "100%" }}
-        transition={{
-          duration: 1.2,
-        }}
-        className="
-          absolute
-          inset-y-0
-          w-20
-          bg-gradient-to-r
-          from-transparent
-          via-cyan-400/20
-          to-transparent
-          blur-xl
-        "
-      />
+        {/* Tech */}
+
+        <div className="mt-6 flex flex-wrap gap-2">
+
+          {project.tech.map((tech) => (
+            <span
+              key={tech}
+              className="
+                rounded-full
+                border
+                border-cyan-400/20
+                bg-cyan-400/10
+                px-3
+                py-1
+                text-xs
+                text-cyan-300
+              "
+            >
+              {tech}
+            </span>
+          ))}
+
+        </div>
+
+        {/* Status */}
+
+        <ProjectStatus
+          status={project.status}
+          github={project.github}
+          demo={project.demo}
+        />
+
+      </ProjectWindow>
     </motion.div>
   );
 }
