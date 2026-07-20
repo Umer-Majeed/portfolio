@@ -1,4 +1,5 @@
 "use client";
+import HeroSatellites from "./HeroSatellites";
 import HeroShield from "./HeroShield";
 import { motion } from "framer-motion";
 import HeroGlyphs from "./HeroGlyphs";
@@ -113,7 +114,7 @@ export default function HeroOrb() {
 
         {/* Orbit Particles */}
         <HeroParticles />
-
+<HeroSatellites />
         {/* Connection Lines */}
         <HeroConnectionLines />
 
