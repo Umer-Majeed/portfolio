@@ -47,9 +47,16 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative min-h-screen bg-[#050816] px-6 py-24"
+      className="
+relative
+min-h-screen
+overflow-hidden
+bg-[var(--background)]
+px-6
+py-28
+"
     >
-      <div className="mx-auto max-w-7xl">
+      <div className="relative z-10 mx-auto max-w-7xl">
         {/* Header */}
         {/* Header */}
 <motion.div
