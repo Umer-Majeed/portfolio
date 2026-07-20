@@ -1,12 +1,12 @@
 "use client";
-
+import ProjectStats from "@/components/sections/projects/ProjectStats";
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search } from "lucide-react";
 import ProjectCard from "@/components/projects/ProjectCard";
 import ProjectModal from "@/components/sections/projects/ProjectModal";
 import { projects } from "@/data/projects";
-
+import ProjectTechWall from "@/components/sections/projects/ProjectTechWall";
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<
     (typeof projects)[number] | null
@@ -97,7 +97,9 @@ py-28
     and full-stack software engineered
     with performance and scalability in mind.
   </p>
-
+  
+<ProjectStats />
+<ProjectTechWall />
   <div className="mt-8 flex items-center gap-4">
 
     <div className="h-[2px] w-24 bg-cyan-400"/>
@@ -264,6 +266,7 @@ ${
 />
        
       </div>
+      <ProjectTechWall />
     </section>
   );
 }
