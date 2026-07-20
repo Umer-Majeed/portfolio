@@ -1,142 +1,155 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-import HeroParticles from "./HeroParticles";
-import HeroScanner from "./HeroScanner";
-import HeroEnergyRing from "./HeroEnergyRing";
-import HeroRingNodes from "./HeroRingNodes";
+import HeroGlyphs from "./HeroGlyphs";
 import HeroCore from "./HeroCore";
+import HeroEnergyRing from "./HeroEnergyRing";
+import HeroScanner from "./HeroScanner";
+import HeroRingNodes from "./HeroRingNodes";
+import HeroParticles from "./HeroParticles";
 import HeroConnectionLines from "./HeroConnectionLines";
 import HeroHUD from "./HeroHUD";
+import HeroMagnetic from "./HeroMagnetic";
+import HeroElectricalArcs from "./HeroElectricalArcs";
 
 export default function HeroOrb() {
   return (
-    <div className="relative flex h-[520px] w-[520px] items-center justify-center">
+    <HeroMagnetic>
+      <div className="relative flex h-[520px] w-[520px] items-center justify-center">
 
-      {/* Ambient Glow */}
-      <motion.div
-        animate={{
-          scale: [1, 1.15, 1],
-          opacity: [0.2, 0.45, 0.2],
-        }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="
-          absolute
-          h-[280px]
-          w-[280px]
-          rounded-full
-          bg-cyan-400/20
-          blur-[100px]
-        "
-      />
-
-      {/* Energy Ring */}
-      <HeroEnergyRing />
-
-      {/* Outer Ring */}
-      <motion.div
-        animate={{ rotate: 360 }}
-        transition={{
-          duration: 28,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-        className="
-          absolute
-          h-[420px]
-          w-[420px]
-          rounded-full
-          border
-          border-white/10
-        "
-      />
-
-      {/* Ring Nodes */}
-      <HeroRingNodes />
-
-      {/* Middle Ring */}
-      <motion.div
-        animate={{ rotate: -360 }}
-        transition={{
-          duration: 18,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-        className="
-          absolute
-          h-[320px]
-          w-[320px]
-          rounded-full
-          border
-          border-cyan-400/20
-        "
-      />
-
-      {/* Scanner */}
-      <HeroScanner />
-
-      {/* Inner Ring */}
-      <motion.div
-        animate={{
-          rotate: 360,
-          scale: [1, 1.04, 1],
-        }}
-        transition={{
-          rotate: {
-            duration: 10,
-            repeat: Infinity,
-            ease: "linear",
-          },
-          scale: {
-            duration: 4,
+        {/* Background Glow */}
+        <motion.div
+          animate={{
+            scale: [1, 1.15, 1],
+            opacity: [0.15, 0.4, 0.15],
+          }}
+          transition={{
+            duration: 5,
             repeat: Infinity,
             ease: "easeInOut",
-          },
-        }}
-        className="
-          absolute
-          h-[220px]
-          w-[220px]
-          rounded-full
-          border
-          border-white/20
-        "
-      />
+          }}
+          className="
+            absolute
+            h-[320px]
+            w-[320px]
+            rounded-full
+            bg-cyan-400/20
+            blur-[120px]
+          "
+        />
 
-      {/* Orbit Particles */}
-      <HeroParticles />
+        {/* Main Energy Ring */}
+        <HeroEnergyRing />
 
-      {/* Core Glow */}
-      <motion.div
-        animate={{
-          scale: [1, 1.18, 1],
-          opacity: [0.5, 0.8, 0.5],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="
-          absolute
-          h-44
-          w-44
-          rounded-full
-          bg-cyan-400/10
-          blur-[55px]
-        "
-      />
+        {/* Outer Ring */}
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="
+            absolute
+            h-[430px]
+            w-[430px]
+            rounded-full
+            border
+            border-white/10
+          "
+        />
 
-      {/* AI Core */}
-      <HeroConnectionLines />
-      <HeroHUD />
-      <HeroCore />
+        {/* Rotating Nodes */}
+        <HeroRingNodes />
 
-    </div>
+        {/* Middle Ring */}
+        <motion.div
+          animate={{ rotate: -360 }}
+          transition={{
+            duration: 18,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="
+            absolute
+            h-[320px]
+            w-[320px]
+            rounded-full
+            border
+            border-cyan-400/20
+          "
+        />
+
+        {/* Scanner */}
+        <HeroScanner />
+
+        {/* Inner Ring */}
+        <motion.div
+          animate={{
+            rotate: 360,
+            scale: [1, 1.03, 1],
+          }}
+          transition={{
+            rotate: {
+              duration: 10,
+              repeat: Infinity,
+              ease: "linear",
+            },
+            scale: {
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+            },
+          }}
+          className="
+            absolute
+            h-[220px]
+            w-[220px]
+            rounded-full
+            border
+            border-white/20
+          "
+        />
+
+        {/* Orbit Particles */}
+        <HeroParticles />
+
+        {/* Connection Lines */}
+        <HeroConnectionLines />
+
+        {/* Electric Arcs */}
+        <HeroElectricalArcs />
+
+        {/* Core Glow */}
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.7, 0.3],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="
+            absolute
+            h-44
+            w-44
+            rounded-full
+            bg-cyan-400/10
+            blur-[70px]
+          "
+        />
+
+        {/* HUD Overlay */}
+        <HeroHUD />
+
+<HeroGlyphs />
+
+        {/* AI Core */}
+        <HeroCore />
+
+      </div>
+    </HeroMagnetic>
   );
 }

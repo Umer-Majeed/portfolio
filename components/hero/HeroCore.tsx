@@ -4,58 +4,92 @@ import { motion } from "framer-motion";
 
 export default function HeroCore() {
   return (
-    <motion.div
-      animate={{
-        scale: [1, 1.05, 1],
-      }}
-      transition={{
-        duration: 2.5,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-      className="relative z-30 flex items-center justify-center"
-    >
-      {/* Glow */}
-      <div
+    <div className="relative flex items-center justify-center">
+
+      {/* OUTER ENERGY */}
+
+      <motion.div
+        animate={{
+          scale: [1, 1.4, 1],
+          opacity: [.2, .45, .2],
+        }}
+        transition={{
+          duration: 3,
+          repeat: Infinity,
+        }}
         className="
-          absolute
-          h-40
-          w-40
-          rounded-full
-          bg-cyan-400/20
-          blur-[60px]
-        "
+        absolute
+        h-48
+        w-48
+        rounded-full
+        border
+        border-cyan-400/20
+      "
       />
 
-      {/* Hexagon */}
-      <div
-        className="
-          relative
-          flex
-          h-28
-          w-28
-          items-center
-          justify-center
-          border
-          border-cyan-400/50
-          bg-[#07111d]/80
-          backdrop-blur-xl
-        "
-        style={{
-          clipPath:
-            "polygon(25% 6%,75% 6%,100% 50%,75% 94%,25% 94%,0% 50%)",
-        }}
-      >
-        <div className="text-center">
-          <p className="font-mono text-[10px] tracking-[4px] text-cyan-300">
-            AI
-          </p>
+      {/* SECOND */}
 
-          <p className="mt-1 text-sm font-bold tracking-[3px] text-white">
-            CORE
-          </p>
-        </div>
-      </div>
-    </motion.div>
+      <motion.div
+        animate={{
+          rotate: 360,
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+        className="
+        absolute
+        h-40
+        w-40
+        rounded-full
+        border-2
+        border-dashed
+        border-cyan-400/30
+      "
+      />
+
+      {/* THIRD */}
+
+      <motion.div
+        animate={{
+          rotate: -360,
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+        className="
+        absolute
+        h-28
+        w-28
+        rounded-full
+        border
+        border-white/20
+      "
+      />
+
+      {/* CORE */}
+
+      <motion.div
+        animate={{
+          scale: [1, 1.1, 1],
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+        }}
+        className="
+        relative
+        z-50
+        h-16
+        w-16
+        rounded-full
+        bg-cyan-300
+        shadow-[0_0_100px_rgba(0,255,255,.8)]
+      "
+      />
+    </div>
   );
 }
