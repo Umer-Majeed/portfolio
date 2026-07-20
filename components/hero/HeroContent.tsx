@@ -1,5 +1,6 @@
 "use client";
-
+import HeroTyping from "./HeroTyping";
+import HeroActions from "./HeroActions";
 export default function HeroScroll() {
   return (
     <div
@@ -8,11 +9,15 @@ export default function HeroScroll() {
         bottom-10
         left-1/2
         -translate-x-1/2
+
       "
+      
     >
       <span className="text-sm text-[#BDBDBD]">
         Scroll
       </span>
+       <HeroTyping />
+       <HeroActions />
     </div>
   );
 }

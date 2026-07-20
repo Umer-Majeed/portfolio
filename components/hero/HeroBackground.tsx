@@ -5,7 +5,7 @@ import HeroGlow from "./HeroGlow";
 import HeroParticles from "./HeroParticles";
 import HeroNoise from "./HeroNoise";
 import HeroScanLines from "./HeroScanLines";
-
+import HeroStarfield from "./HeroStarfield";
 export default function HeroBackground() {
   return (
     <>
@@ -20,7 +20,7 @@ export default function HeroBackground() {
 
       {/* Floating Background Particles */}
       <HeroParticles />
-
+<HeroStarfield />
       {/* Display Noise */}
       <HeroNoise />
 
