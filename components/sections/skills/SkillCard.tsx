@@ -19,7 +19,7 @@ export default function SkillCard({
         scale: 1.02,
       }}
       transition={{
-        duration: .25,
+        duration: 0.25,
       }}
       className="
         group
@@ -27,7 +27,7 @@ export default function SkillCard({
         border
         border-white/10
         bg-white/[0.04]
-        p-5
+        p-3
         backdrop-blur-xl
         transition-all
         duration-300
@@ -36,10 +36,9 @@ export default function SkillCard({
       "
     >
       <div className="flex items-center justify-between">
-
         <h4
           className="
-            text-base
+            text-sm
             font-semibold
             text-white
             transition-colors
@@ -56,7 +55,7 @@ export default function SkillCard({
             border
             border-cyan-400/20
             bg-cyan-400/10
-            px-3
+            px-2
             py-1
             font-mono
             text-xs
@@ -66,10 +65,9 @@ export default function SkillCard({
         >
           {level}%
         </span>
-
       </div>
 
       <SkillBar value={level} />
     </motion.div>
   );
-}
+} 

@@ -2,10 +2,9 @@
 
 import { motion } from "framer-motion";
 
-import SkillTimeline from "@/components/sections/skills/SkillTimeline";
 import SkillRadar from "@/components/sections/skills/SkillRadar";
 import SectionBackground from "@/components/ui/SectionBackground";
-
+import SkillReveal from "@/components/sections/skills/SkillReveal";
 export default function Skills() {
   return (
     <section
@@ -64,8 +63,7 @@ export default function Skills() {
         </div>
 
         {/* Scroll Animation */}
-        <SkillTimeline />
-
+<SkillReveal />
       </div>
     </section>
   );

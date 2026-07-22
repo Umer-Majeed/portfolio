@@ -29,19 +29,20 @@ export default function SkillCategory({
       }}
       viewport={{ once: true }}
       transition={{
-        duration: .5,
+        duration: 0.5,
       }}
       className="
-        rounded-3xl
+        skill-category
+        reveal-card
+        rounded-2xl
         border
         border-white/10
         bg-white/[0.03]
-        p-8
+        p-5
         backdrop-blur-xl
       "
     >
       <div className="mb-8 flex items-center gap-4">
-
         <div className="h-[2px] w-12 bg-cyan-400" />
 
         <h3
@@ -54,11 +55,9 @@ export default function SkillCategory({
         >
           {title.toUpperCase()}
         </h3>
-
       </div>
 
-      <div className="space-y-5">
-
+      <div className="space-y-4">
         {skills.map((skill) => (
           <SkillCard
             key={skill.name}
@@ -66,7 +65,6 @@ export default function SkillCategory({
             level={skill.level}
           />
         ))}
-
       </div>
     </motion.div>
   );
