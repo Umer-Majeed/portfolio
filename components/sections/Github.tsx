@@ -1,6 +1,5 @@
 "use client";
 
-import GithubBackground from "@/components/github/GithubBackground";
 import GithubGrid from "@/components/github/GithubGrid";
 import GithubHeader from "@/components/github/GithubHeader";
 import GithubProfile from "@/components/github/GithubProfile";
@@ -9,6 +8,7 @@ import GithubRepos from "@/components/github/GithubRepos";
 import GithubLanguages from "@/components/github/GithubLanguages";
 import GithubContribution from "@/components/github/GithubContribution";
 import GithubCTA from "@/components/github/GithubCTA";
+import SectionBackground from "@/components/ui/SectionBackground";
 
 export default function Github() {
   return (
@@ -22,30 +22,27 @@ export default function Github() {
         py-24
       "
     >
-      <GithubBackground />
+      <SectionBackground />
 
-      <GithubGrid>
+      <div className="relative z-10">
+        <GithubGrid>
+          <GithubHeader />
 
-        <GithubHeader />
+          <div className="grid gap-8">
+            <GithubProfile />
 
-        <div className="grid gap-8">
+            <GithubStats />
 
-          <GithubProfile />
+            <GithubRepos />
 
-          <GithubStats />
+            <GithubLanguages />
 
-          <GithubRepos />
+            <GithubContribution />
 
-          <GithubLanguages />
-
-          <GithubContribution />
-
-          <GithubCTA />
-
-        </div>
-
-      </GithubGrid>
-
+            <GithubCTA />
+          </div>
+        </GithubGrid>
+      </div>
     </section>
   );
 }

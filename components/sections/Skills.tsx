@@ -2,60 +2,69 @@
 
 import { motion } from "framer-motion";
 
-import SkillGrid from "@/components/sections/skills/SkillGrid";
+import SkillTimeline from "@/components/sections/skills/SkillTimeline";
 import SkillRadar from "@/components/sections/skills/SkillRadar";
-import SkillTerminal from "@/components/sections/skills/SkillTerminal";
-import FloatingIcons from "@/components/sections/skills/FloatingIcons";
+import SectionBackground from "@/components/ui/SectionBackground";
 
 export default function Skills() {
   return (
     <section
       id="skills"
-      className="relative overflow-hidden bg-[#050816] px-6 py-24"
+      className="relative overflow-hidden bg-[#050816]"
     >
-      <FloatingIcons />
+      <SectionBackground />
 
-      <div className="mx-auto max-w-7xl">
+      <div className="relative z-10">
 
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-20"
-        >
-          <span
-            className="
-              rounded-full
-              border
-              border-cyan-400/20
-              bg-cyan-400/10
-              px-4
-              py-2
-              font-mono
-              text-xs
-              tracking-[4px]
-              text-cyan-400
-            "
-          >
-            AI SKILL MATRIX
-          </span>
+        {/* Sticky Container */}
+        <div className="sticky top-0 flex h-screen items-center">
 
-          <h2 className="mt-6 text-5xl font-black md:text-7xl">
-            Skills
-          </h2>
+          <div className="mx-auto grid w-full max-w-7xl grid-cols-2 items-center gap-20 px-6">
 
-          <p className="mt-6 max-w-3xl text-lg text-gray-400">
-            Technologies, frameworks and tools used to build
-            AI systems, full-stack applications and premium user experiences.
-          </p>
-        </motion.div>
+            {/* LEFT */}
+            <div>
 
-        <div className="mb-20 grid items-center gap-16 lg:grid-cols-2">
-          <SkillGrid />
-          <SkillRadar />
+              <motion.span
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                className="
+                  rounded-full
+                  border
+                  border-cyan-400/20
+                  bg-cyan-400/10
+                  px-4
+                  py-2
+                  font-mono
+                  text-xs
+                  tracking-[4px]
+                  text-cyan-400
+                "
+              >
+                AI SKILL MATRIX
+              </motion.span>
+
+              <h2 className="mt-8 text-6xl font-black md:text-7xl">
+                Skills
+              </h2>
+
+              <p className="mt-8 max-w-xl text-lg leading-8 text-gray-400">
+                Technologies, frameworks and tools used to build AI systems,
+                full-stack applications and premium user experiences.
+              </p>
+
+            </div>
+
+            {/* RIGHT */}
+            <div className="flex justify-center">
+              <SkillRadar />
+            </div>
+
+          </div>
+
         </div>
 
-        <SkillTerminal />
+        {/* Scroll Animation */}
+        <SkillTimeline />
 
       </div>
     </section>

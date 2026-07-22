@@ -8,6 +8,7 @@ import ProjectStats from "@/components/sections/projects/ProjectStats";
 import ProjectTechWall from "@/components/sections/projects/ProjectTechWall";
 import ProjectCard from "@/components/projects/ProjectCard";
 import ProjectModal from "@/components/sections/projects/ProjectModal";
+import SectionBackground from "@/components/ui/SectionBackground";
 import { projects } from "@/data/projects";
 
 export default function Projects() {
@@ -53,11 +54,13 @@ export default function Projects() {
         relative
         min-h-screen
         overflow-hidden
-        bg-[var(--background)]
+        bg-[#050816]
         px-6
         py-28
       "
     >
+      <SectionBackground />
+
       <div className="relative z-10 mx-auto max-w-7xl">
         {/* Header Section */}
         <motion.div
@@ -98,7 +101,7 @@ export default function Projects() {
           {/* Project Stats */}
           <ProjectStats />
 
-          {/* Project Tech Wall (Added right below ProjectStats) */}
+          {/* Project Tech Wall */}
           <ProjectTechWall />
 
           <div className="mt-8 flex items-center gap-4">

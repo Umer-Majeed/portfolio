@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight, X, ExternalLink } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import Image from "next/image";
 import { useState } from "react";
-import ProjectTerminal from "./ProjectTerminal";
+
 
 type Project = {
   id: number;
@@ -405,7 +405,7 @@ export default function ProjectModal({
               </div>
 
               {/* Project Terminal */}
-              <ProjectTerminal project={project.title} />
+              
             </div>
           </motion.div>
         </motion.div>

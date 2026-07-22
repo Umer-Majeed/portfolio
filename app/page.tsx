@@ -3,8 +3,8 @@
 import { useState } from "react";
 
 import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
 
+import Footer from "@/components/footer/Footer";
 import Hero from "@/components/hero"; // ✅ New Hero
 
 import About from "@/components/sections/About";
@@ -52,7 +52,7 @@ export default function Home() {
       
 
       {/* Contact */}
-      <Contact />
+    
 
       {/* Footer */}
       <Footer />

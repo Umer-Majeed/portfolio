@@ -12,13 +12,13 @@ const items=[
 {
 icon:Mail,
 title:"Email",
-value:"umer@example.com"
+value:"Contact2mrumer@gmail.com"
 },
 
 {
 icon:Phone,
 title:"Phone",
-value:"+92 XXX XXXXXXX"
+value:"+92 319 5360729"
 },
 
 {

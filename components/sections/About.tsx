@@ -1,6 +1,7 @@
 "use client";
 
 import { container, section } from "@/lib/layout";
+import SectionBackground from "@/components/ui/SectionBackground";
 
 import SystemHeader from "./about/SystemHeader";
 import ProfileCard from "./about/ProfileCard";
@@ -11,18 +12,22 @@ export default function About() {
   return (
     <section
       id="about"
-      className={`${section} relative overflow-hidden`}
+      className={`${section} relative overflow-hidden bg-[#050816]`}
     >
-      <div className={container}>
-        <SystemHeader />
+      <SectionBackground />
 
-        <div className="grid gap-8 lg:grid-cols-2">
-          <ProfileCard />
+      <div className="relative z-10">
+        <div className={container}>
+          <SystemHeader />
 
-          <div className="space-y-8">
-            <InfoGrid />
+          <div className="grid gap-8 lg:grid-cols-2">
+            <ProfileCard />
 
-            <TechDNA />
+            <div className="space-y-8">
+              <InfoGrid />
+
+              <TechDNA />
+            </div>
           </div>
         </div>
       </div>

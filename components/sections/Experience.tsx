@@ -3,8 +3,7 @@
 import ExperienceHeader from "@/components/experience/ExperienceHeader";
 import ExperienceStats from "@/components/experience/ExperienceStats";
 import ExperienceTimeline from "@/components/experience/ExperienceTimeline";
-import ExperienceTerminal from "@/components/experience/ExperienceTerminal";
-import ExperienceBackground from "@/components/experience/ExperienceBackground";
+import SectionBackground from "@/components/ui/SectionBackground";
 
 export default function Experience() {
   return (
@@ -18,18 +17,16 @@ export default function Experience() {
         py-24
       "
     >
-      <ExperienceBackground />
+      <SectionBackground />
 
-      <div className="relative mx-auto max-w-7xl">
-
+      <div className="relative z-10 mx-auto max-w-7xl">
         <ExperienceHeader />
 
         <ExperienceStats />
 
         <ExperienceTimeline />
 
-        <ExperienceTerminal />
-
+    
       </div>
     </section>
   );
